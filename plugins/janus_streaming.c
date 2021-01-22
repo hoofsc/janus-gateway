@@ -3767,7 +3767,7 @@ static json_t *janus_streaming_process_synchronous_request(janus_streaming_sessi
 		json_t *event = json_object();
 		json_object_set_new(event, "streaming", json_string("event"));
 		/* updated hoofsc */
-		json_object_set_new(event, "description", mp->description);
+		json_object_set_new(event, "description", json_string(&mp->description));
 		/* end updated */
 		json_t *result = json_object();
 		json_object_set_new(result, "status", json_string("stopped"));
