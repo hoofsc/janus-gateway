@@ -3767,8 +3767,8 @@ static json_t *janus_streaming_process_synchronous_request(janus_streaming_sessi
 		json_t *event = json_object();
 		json_object_set_new(event, "streaming", json_string("event"));
 		/* updated hoofsc */
-		JANUS_LOG(LOG_VERB, "CHECK 1: mp->desc %s\n", mp->description);
-		JANUS_LOG(LOG_VERB, "CHECK 2: json_string(mp->desc) %s\n", json_string(mp->description));
+		JANUS_LOG(LOG_INFO, "CHECK 1: mp->desc %s\n", mp->description);
+		JANUS_LOG(LOG_INFO, "CHECK 2: json_string(mp->desc) %s\n", json_string(mp->description));
 		json_object_set_new(event, "description", json_string(mp->description));
 		/* end updated */
 		json_t *result = json_object();
