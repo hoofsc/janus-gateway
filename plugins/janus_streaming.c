@@ -8155,6 +8155,9 @@ static void *janus_streaming_relay_thread(void *data) {
 	/* Prepare JSON event */
 	json_t *event = json_object();
 	json_object_set_new(event, "streaming", json_string("event"));
+	/* updated hoofsc */
+	json_object_set_new(event, "description", json_string(mountpoint->description));
+	/* end updated */
 	json_t *result = json_object();
 	json_object_set_new(result, "status", json_string("stopped"));
 	json_object_set_new(event, "result", result);
