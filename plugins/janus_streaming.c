@@ -4976,6 +4976,9 @@ done:
 				json_t *info = json_object();
 				json_object_set_new(info, "status", json_string("starting"));
 				if(session->mountpoint != NULL)
+					/* edited by hoofsc */
+					json_object_set_new(info, "description", json_string(session->mountpoint->description));
+					/* end edited by hoofsc */
 					json_object_set_new(info, "id", string_ids ?
 						json_string(session->mountpoint->id_str) :json_integer(session->mountpoint->id));
 				gateway->notify_event(&janus_streaming_plugin, session->handle, info);
