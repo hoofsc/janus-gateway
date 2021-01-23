@@ -4925,6 +4925,9 @@ done:
 			sdp = g_strdup(sdptemp);
 			JANUS_LOG(LOG_VERB, "Going to %s this SDP:\n%s\n", sdp_type, sdp);
 			result = json_object();
+				/* edited by hoofsc */
+				json_object_set_new(result, "description", json_string(mp->description));
+				/* end edited by hoofsc */
 			json_object_set_new(result, "status", json_string(do_restart ? "updating" : "preparing"));
 			/* Add the user to the list of watchers and we're done */
 			if(g_list_find(mp->viewers, session) == NULL) {
