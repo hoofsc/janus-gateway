@@ -4970,15 +4970,15 @@ done:
 			g_atomic_int_set(&session->paused, 0);
 			result = json_object();
 			/* We wait for the setup_media event to start: on the other hand, it may have already arrived */
+				/* edited by hoofsc */
+				json_object_set_new(result, "description", json_string(session->mountpoint->description));
+				/* end edited by hoofsc */
 			json_object_set_new(result, "status", json_string(g_atomic_int_get(&session->started) ? "started" : "starting"));
 			/* Also notify event handlers */
 			if(notify_events && gateway->events_is_enabled()) {
 				json_t *info = json_object();
 				json_object_set_new(info, "status", json_string("starting"));
 				if(session->mountpoint != NULL)
-					/* edited by hoofsc */
-					json_object_set_new(info, "description", json_string(session->mountpoint->description));
-					/* end edited by hoofsc */
 					json_object_set_new(info, "id", string_ids ?
 						json_string(session->mountpoint->id_str) :json_integer(session->mountpoint->id));
 				gateway->notify_event(&janus_streaming_plugin, session->handle, info);
